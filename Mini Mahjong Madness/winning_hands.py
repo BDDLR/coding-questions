@@ -34,7 +34,6 @@ def is_valid_count(tile_dict):
 
 def complete(tiles):
     tile_dict = {}
-    is_valid_pair = False
     for tile in tiles:
         if not tile in tile_dict:
             tile_dict[tile] =  1
