@@ -1,3 +1,27 @@
+def dfs(grid, visited, r, c, number, N, M):
+    # Stack for DFS
+    stack = [(r, c)]
+    count = 0
+    
+    while stack:
+        x, y = stack.pop()
+        
+        # If already visited, skip
+        if visited[x][y]:
+            continue
+        
+        # Mark as visited
+        visited[x][y] = True
+        count += 1
+        
+        # Explore neighbors (up, down, left, right)
+        for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < N and 0 <= ny < M and not visited[nx][ny] and grid[nx][ny] == number:
+                stack.append((nx, ny))
+    
+    return count
+
 def disappear(grid, row, col):
     if not grid or not grid[0]:
         return 0
@@ -15,36 +39,12 @@ def disappear(grid, row, col):
     # Initialize visited matrix
     visited = [[False] * M for _ in range(N)]
     
-    def dfs(r, c):
-        # Stack for DFS
-        stack = [(r, c)]
-        count = 0
-        
-        while stack:
-            x, y = stack.pop()
-            
-            # If already visited, skip
-            if visited[x][y]:
-                continue
-            
-            # Mark as visited
-            visited[x][y] = True
-            count += 1
-            
-            # Explore neighbors (up, down, left, right)
-            for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                nx, ny = x + dx, y + dy
-                if 0 <= nx < N and 0 <= ny < M and not visited[nx][ny] and grid[nx][ny] == number:
-                    stack.append((nx, ny))
-        
-        return count
-    
     # If already visited, return 0
     if visited[row][col]:
         return 0
     
     # Perform DFS from the selected cell
-    return dfs(row, col)
+    return dfs(grid, visited, row, col, number, N, M)
 
 # Test cases
 grid_1 = [
@@ -86,14 +86,14 @@ grid_5 = [
 ]
 
 # Test cases
-print(disappear(grid_1, 0, 0))
-print(disappear(grid_1, 1, 1))
-print(disappear(grid_1, 1, 0))
-print(disappear(grid_2, 0, 0))
-print(disappear(grid_2, 3, 0))
-print(disappear(grid_2, 1, 1))
-print(disappear(grid_2, 2, 2))
-print(disappear(grid_2, 0, 3))
-print(disappear(grid_3, 0, 0))
-print(disappear(grid_4, 0, 0))
-print(disappear(grid_5, 0, 11))
+print(disappear(grid_1, 0, 0))  # Output: 5
+print(disappear(grid_1, 1, 1))  # Output: 4
+print(disappear(grid_1, 1, 0))  # Output: 4
+print(disappear(grid_2, 0, 0))  # Output: 12
+print(disappear(grid_2, 3, 0))  # Output: 12
+print(disappear(grid_2, 1, 1))  # Output: 13
+print(disappear(grid_2, 2, 2))  # Output: 6
+print(disappear(grid_2, 0, 3))  # Output: 5
+print(disappear(grid_3, 0, 0))  # Output: 1
+print(disappear(grid_4, 0, 0))  # Output: 9
+print(disappear(grid_5, 0, 11)) # Output: 23
