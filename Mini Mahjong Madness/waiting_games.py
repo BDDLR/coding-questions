@@ -86,16 +86,14 @@ grid_5 = [
 ]
 
 # Test cases
-print(disappear(grid_1, 0, 0))  # Output: 5
-print(disappear(grid_1, 1, 1))  # Output: 4
-print(disappear(grid_1, 1, 0))  # Output: 4
-
-print(disappear(grid_2, 0, 0))  # Output: 12
-print(disappear(grid_2, 3, 0))  # Output: 12
-print(disappear(grid_2, 1, 1))  # Output: 13
-print(disappear(grid_2, 2, 2))  # Output: 6
-print(disappear(grid_2, 0, 3))  # Output: 5
-
-print(disappear(grid_3, 0, 0))  # Output: 1
-print(disappear(grid_4, 0, 0))  # Output: 9
-print(disappear(grid_5, 0, 11)) # Output: 23
+print(disappear(grid_1, 0, 0))
+print(disappear(grid_1, 1, 1))
+print(disappear(grid_1, 1, 0))
+print(disappear(grid_2, 0, 0))
+print(disappear(grid_2, 3, 0))
+print(disappear(grid_2, 1, 1))
+print(disappear(grid_2, 2, 2))
+print(disappear(grid_2, 0, 3))
+print(disappear(grid_3, 0, 0))
+print(disappear(grid_4, 0, 0))
+print(disappear(grid_5, 0, 11))
